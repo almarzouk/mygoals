@@ -16,15 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use("/api/goals", require("./routes/goalRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
-app.options("/api/users/", (req, res) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    process.env.ACCESS_CONTROL_ALLOW_ORIGIN
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.send();
-});
 // Serve frontend
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
